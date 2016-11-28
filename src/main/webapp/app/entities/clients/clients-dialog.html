@@ -1,0 +1,62 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myClientsLabel">Create or edit a Clients</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.clients.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.clients.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.clients.name"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_topic">Topic</label>
+            <input type="text" class="form-control" name="topic" id="field_topic"
+                    ng-model="vm.clients.topic"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="msgApp.clients.consumer_count" for="field_consumer_count">Consumer Count</label>
+            <input type="number" class="form-control" name="consumerCount" id="field_consumer_count"
+                    ng-model="vm.clients.consumerCount"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="msgApp.clients.target_endpoint" for="field_target_endpoint">Target Endpoint</label>
+            <input type="text" class="form-control" name="targetEndpoint" id="field_target_endpoint"
+                    ng-model="vm.clients.targetEndpoint"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" translate="msgApp.clients.keycloak_user" for="field_keycloak_user">Keycloak User</label>
+            <input type="number" class="form-control" name="keycloak_user" id="field_keycloak_user"
+                    ng-model="vm.clients.keycloak_user"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label for="field_keycloakUserMap">Keycloak User Map</label>
+            <select class="form-control" id="field_keycloakUserMap" name="keycloakUserMap" ng-model="vm.clients.keycloakUserMap" ng-options="keycloakUser as keycloakUser.id for keycloakUser in vm.keycloakusers track by keycloakUser.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>
